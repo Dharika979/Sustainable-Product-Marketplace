@@ -1,1 +1,502 @@
 # Sustainable-Product-Marketplace
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+    <title>EcoMarket - Sustainable Product Marketplace</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- ================= HEADER ================= -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                🌱 EcoMarket
+            </div>
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#products">Products</a>
+                <a href="#about">About</a>
+                <button class="cart-btn"
+/* ================= GENERAL ================= */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: #18352a;
+    background: #f5faf5;
+}
+/* ================= NAVBAR ================= */
+.navbar {
+    height: 70px;
+    padding: 0 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    box-shadow:
+        0 2px 10px #00000012;
+}
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #247a4d;
+}
+.nav-links {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+}
+.nav-links a {
+    color: #18352a;
+    text-decoration: none;
+    font-weight: 500;
+}
+.nav-links a:hover {
+    color: #247a4d;
+}
+.cart-btn {
+    border: none;
+    background: #e5f4e9;
+    padding: 10px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    color: #1d6840;
+    font-weight: bold;
+}
+.cart-btn:hover {
+    background: #d4eddb;
+}
+/* ================= HERO ================= */
+.hero {
+    min-height: 520px;
+    padding: 80px 8%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    background:
+        linear-gradient(
+            120deg,
+            #e8f6e9,
+            #d7f0df
+        );
+}
+.hero-content {
+    max-width: 650px;
+}
+.tag {
+    color: #2c8a55;
+    font-weight: bold;
+    letter-spacing: 2px;
+    font-size: 13px;
+    margin-bottom: 12px;
+}
+.hero h1 {
+    font-size: clamp(
+        40px,
+        6vw,
+        68px
+    );
+    line-height: 1.05;
+    margin-bottom: 20px;
+}
+.hero p:not(.tag) {
+    font-size: 19px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    color: #456057;
+}
+/* ================= BUTTON ================= */
+.primary-btn {
+    display: inline-block;
+    background: #247a4d;
+    color: white;
+    border: none;
+    padding: 13px 22px;
+    border-radius: 8px;
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+.primary-btn:hover {
+    background: #1c633e;
+}
+/* ================= HERO CARD ================= */
+.hero-card {
+    background: white;
+    width: 270px;
+    height: 270px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 60px;
+    box-shadow:
+        0 20px 50px #26613c25;
+}
+.hero-card strong {
+    font-size: 23px;
+    margin: 8px 0;
+}
+.hero-card small {
+    font-size: 14px;
+    color: #65776e;
+    padding: 0 30px;
+}
+/* ================= PRODUCT SECTION ================= */
+.section {
+    padding: 80px 8%;
+}
+.section-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    gap: 20px;
+    margin-bottom: 35px;
+}
+.section h2,
+.about h2 {
+    font-size: 38px;
+}
+#searchBox {
+    width: 260px;
+    padding: 13px 15px;
+    border: 1px solid #c8d8ce;
+    border-radius: 8px;
+    background: white;
+    outline: none;
+}
+#searchBox:focus {
+    border-color: #247a4d;
+}
+/* ================= PRODUCT GRID ================= */
+.products-grid {
+    display: grid;
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(220px, 1fr)
+        );
+
+    gap: 24px;
+}
+/* ================= PRODUCT CARD ================= */
+.product {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow:
+        0 5px 20px #153b2912;
+    transition: 0.2s;
+}
+.product:hover {
+    transform: translateY(-5px);
+    box-shadow:
+        0 10px 25px #153b2920;
+}
+.product-img {
+    height: 170px;
+    display: grid;
+    place-items: center;
+    font-size: 65px;
+    background: #e9f5eb;
+}
+.product-info {
+    padding: 18px;
+}
+.product h3 {
+    margin-bottom: 8px;
+}
+.product p {
+    color: #6a7971;
+    font-size: 14px;
+    min-height: 40px;
+    line-height: 1.5;
+}
+.price {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 15px 0;
+    color: #247a4d;
+}
+.add-btn {
+    width: 100%;
+    padding: 11px;
+    border: none;
+    border-radius: 7px;
+    background: #edf7ef;
+    color: #247a4d;
+    cursor: pointer;
+    font-weight: bold;
+}
+.add-btn:hover {
+    background: #247a4d;
+    color: white;
+}
+/* ================= ABOUT ================= */
+.about {
+    padding: 70px 8%;
+    text-align: center;
+    background: #e8f4ea;
+}
+.features {
+    display: grid;
+    grid-template-columns:
+        repeat(3, 1fr);
+    gap: 25px;
+    margin-top: 35px;
+}
+.features div {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+}
+.feature-icon {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+.features h3 {
+    margin-bottom: 8px;
+}
+.features p {
+    color: #68776f;
+    line-height: 1.5;
+}
+/* ================= FOOTER ================= */
+footer {
+    padding: 25px;
+    text-align: center;
+    background: #18352a;
+    color: white;
+}
+/* ================= MODAL ================= */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: #0008;
+    z-index: 20;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+.modal-box {
+    background: white;
+    width: min(
+        500px,
+        100%
+    );
+    padding: 30px;
+    border-radius: 15px;
+    position: relative;
+}
+.close {
+    position: absolute;
+    right: 18px;
+    top: 12px;
+    border: none;
+    background: none;
+    font-size: 30px;
+    cursor: pointer;
+}
+.cart-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 0;
+    border-bottom:
+        1px solid #ddd;
+}
+.cart-row button {
+    border: none;
+    background: #ffe9e9;
+    color: red;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 4px 7px;
+}
+#cartTotal {
+    margin: 20px 0;
+}
+/* ================= MOBILE ================= */
+@media (max-width: 700px) {
+    .nav-links a {
+        display: none;
+    }
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 60px 5%;
+    }
+    .hero-card {
+        width: 210px;
+        height: 210px;
+    }
+    .section-title {
+        align-items: stretch;
+        flex-direction: column;
+    }
+    #searchBox {
+        width: 100%;
+    }
+    .features {
+        grid-template-columns: 1fr;
+    }
+}
+                    onclick="showCart()">
+                    🛒 Cart
+                    <span id="cartCount">0</span>
+                </button>
+            </div>
+        </nav>
+    </header>
+    <!-- ================= HOME ================= -->
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <p class="tag">
+                    SHOP • SAVE • SUSTAIN
+                </p>
+                <h1>
+                    Sustainable products
+                    for a better tomorrow.
+                </h1>
+                <p>
+                    Discover eco-friendly products from
+                    responsible sellers and make greener
+                    choices every day.
+                </p>
+                <a href="#products"
+                    class="primary-btn">
+                    Shop Now
+                </a>
+            </div>
+            <div class="hero-card">
+                🌍
+                <strong>
+                    Choose Green
+                </strong>
+                <small>
+                    Small choices create big impact.
+                </small>
+            </div>
+        </section>
+        <!-- ================= PRODUCTS ================= -->
+        <section id="products"
+            class="section">
+            <div class="section-title">
+                <div>
+                    <p class="tag">
+                        ECO-FRIENDLY COLLECTION
+                    </p>
+                    <h2>
+                        Featured Products
+                    </h2>
+                </div>
+                <input
+                    id="searchBox"
+                    type="text"
+                    placeholder="Search products..."
+                    oninput="renderProducts()">
+            </div>
+            <div
+                id="productsGrid"
+                class="products-grid">
+            </div>
+        </section>
+        <!-- ================= ABOUT ================= -->
+        <section id="about"
+            class="about">
+            <h2>
+                Why EcoMarket?
+            </h2>
+            <div class="features">
+                <div>
+                    <div class="feature-icon">
+                        ♻️
+                    </div>
+                    <h3>
+                        Reusable
+                    </h3>
+                    <p>
+                        Products designed to reduce
+                        waste and promote reuse.
+                    </p>
+                </div>
+                <div>
+                    <div class="feature-icon">
+                        🌿
+                    </div>
+                    <h3>
+                        Eco-Friendly
+                    </h3>
+                    <p>
+                        Better materials and greener
+                        choices for our planet.
+                    </p>
+                </div>
+                <div>
+                    <div class="feature-icon">
+                    </div>
+                    <h3>
+                        Responsible Sellers
+                    </h3>
+                    <p>
+                        Support sustainable small
+                        businesses and creators.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- ================= FOOTER ================= -->
+    <footer>
+        <p>
+            © 2026 EcoMarket |
+            Sustainable Product Marketplace
+        </p>
+
+    </footer>
+    <!-- ================= CART MODAL ================= -->
+    <div id="cartModal"
+        class="modal">
+        <div class="modal-box">
+            <button
+                class="close"
+                onclick="closeCart()">
+            </button>
+            <h2>
+                Your Cart
+            </h2>
+            <div id="cartItems">
+            </div>
+            <h3 id="cartTotal">
+                Total: ₹0
+            </h3>
+            <button
+                class="primary-btn"
+                onclick="checkout()">
+                Place Demo Order
+            </button>
+        </div>
+    </div>
+    <!-- ================= JAVASCRIPT ================= -->
+    <script src="script.js"></script>
+</body>
+</html>
